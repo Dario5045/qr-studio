@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://qr-studio.pages.dev/sitemap.xml
+Sitemap: https://qr-studio.dario5045a.workers.dev/sitemap.xml
