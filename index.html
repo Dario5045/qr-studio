@@ -1,313 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generador de Código QR Gratis y Online</title>
-    <meta
-      name="description"
-      content="Crea códigos QR personalizados gratis en segundos. Cambia colores, descarga en PNG y SVG de forma rápida y segura."
-    />
-    <meta property="og:title" content="Generador de Código QR Gratis y Online" />
-    <meta
-      property="og:description"
-      content="Crea códigos QR personalizados gratis en segundos. Cambia colores, descarga en PNG y SVG de forma rápida y segura."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.1/qrcode.js"></script>
-  </head>
-  <body>
-    <main class="app-shell">
-      <section class="qr-card">
-        <div class="left-column">
-          <div class="card-header">
-            <div class="badge">QR Studio</div>
-            <h1>Generador de Códigos QR</h1>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
 
-          <div class="ad-container ad-top" aria-label="Espacio publicitario superior">
-            <span class="ad-label">Publicidad</span>
-            <div class="ad-placeholder">Leaderboard / Banner 728x90</div>
-          </div>
+  <!-- SEO Básico -->
+  <title>QR Studio — Generador de Código QR Gratis y Online</title>
+  <meta name="description" content="Crea códigos QR personalizados gratis en segundos. Cambia colores, ajusta el tamaño y descarga en PNG o SVG directamente en tu navegador.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="canonical" href="https://qr-studio.pages.dev/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%96%A6%3C/text%3E%3C/svg%3E">
 
-          <div class="panel">
-            <label for="qr-text" class="label">Texto o URL</label>
-            <textarea
-              id="qr-text"
-              rows="5"
-              placeholder="https://ejemplo.com o escribe cualquier texto..."
-            >https://ejemplo.com</textarea>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="QR Studio">
+  <meta property="og:url" content="https://qr-studio.pages.dev/">
+  <meta property="og:title" content="QR Studio — Generador de Código QR Gratis y Online">
+  <meta property="og:description" content="Genera códigos QR personalizados en PNG y SVG. Todo se procesa en tu navegador sin enviar datos a servidores.">
 
-            <div class="controls">
-              <div class="control-group">
-                <div class="control-header">
-                  <label for="size-range">Tamaño</label>
-                  <span id="size-value">220 px</span>
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="QR Studio — Generador de Código QR Gratis y Online">
+  <meta name="twitter:description" content="Genera códigos QR personalizados en PNG y SVG. Todo se procesa en tu navegador.">
+
+  <!-- Estilos y scripts locales -->
+  <link rel="stylesheet" href="style.css">
+  <script src="/vendor/qrcode.min.js" defer></script>
+  <script src="app.js" defer></script>
+
+  <!-- JSON-LD Estructurado (WebApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "QR Studio",
+    "url": "https://qr-studio.pages.dev/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Generador de códigos QR personalizados gratis con descarga en PNG y SVG directamente en el navegador."
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>QR Studio</h1>
+    <p>Crea y descarga códigos QR personalizados al instante en tu navegador.</p>
+  </header>
+
+  <!-- ========== ESPACIO PUBLICITARIO SUPERIOR (Listo para integrar) ========== -->
+  <aside class="ad-wrapper ad-wrapper--top" aria-label="Espacio publicitario superior">
+    <div class="ad-container ad-container--top" id="ad-slot-top">
+      <span class="ad-badge">Publicidad</span>
+      <div class="ad-slot-content">
+        <!-- Inserta aquí tu unidad de anuncio superior -->
+        <span>Espacio para anuncio superior</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="app-shell">
+    <section class="qr-card" aria-label="Generador de códigos QR">
+      <div class="left-column">
+        <div class="panel">
+          <label for="qr-text" class="label">Texto o URL</label>
+          <textarea
+            id="qr-text"
+            rows="5"
+            placeholder="https://ejemplo.com o escribe cualquier texto..."
+          >https://ejemplo.com</textarea>
+
+          <div class="controls">
+            <div class="control-group">
+              <div class="control-header">
+                <label for="size-range">Tamaño de vista previa</label>
+                <span id="size-value">220 px</span>
+              </div>
+              <input id="size-range" type="range" min="160" max="320" step="10" value="220">
+            </div>
+
+            <div class="control-group">
+              <label for="level" class="control-header">Corrección de errores</label>
+              <select id="level">
+                <option value="L">Baja (L): más datos, QR más simple</option>
+                <option value="M">Media (M)</option>
+                <option value="Q">Alta (Q)</option>
+                <option value="H" selected>Máxima (H): resiste daños y logos</option>
+              </select>
+            </div>
+
+            <div class="control-grid">
+              <div class="control-group color-control">
+                <label for="color-dark">Color principal</label>
+                <div class="color-input-wrap">
+                  <input id="color-dark" type="color" value="#0f172a">
                 </div>
-                <input id="size-range" type="range" min="160" max="320" step="10" value="220" />
               </div>
 
-              <div class="control-grid">
-                <div class="control-group color-control">
-                  <label for="color-dark">Color principal</label>
-                  <div class="color-input-wrap">
-                    <input id="color-dark" type="color" value="#0f172a" />
-                  </div>
-                </div>
-
-                <div class="control-group color-control">
-                  <label for="color-light">Color de fondo</label>
-                  <div class="color-input-wrap">
-                    <input id="color-light" type="color" value="#ffffff" />
-                  </div>
+              <div class="control-group color-control">
+                <label for="color-light">Color de fondo</label>
+                <div class="color-input-wrap">
+                  <input id="color-light" type="color" value="#ffffff">
                 </div>
               </div>
             </div>
-
-            <div class="actions">
-              <button id="generate-btn" type="button">Generar QR</button>
-              <button id="clear-btn" type="button" class="secondary">Limpiar</button>
-            </div>
-
-            <div class="download-actions">
-              <button id="download-png" type="button" class="download-btn">Descargar PNG</button>
-              <button id="download-svg" type="button" class="download-btn secondary">Descargar SVG</button>
-            </div>
           </div>
 
-          <div class="ad-container ad-bottom" aria-label="Espacio publicitario inferior">
-            <span class="ad-label">Publicidad</span>
-            <div class="ad-placeholder">Banner inferior / 320x100</div>
+          <p id="hint" class="hint" role="status" aria-live="polite" hidden></p>
+
+          <div class="actions">
+            <button id="generate-btn" type="button">Generar QR</button>
+            <button id="clear-btn" type="button" class="secondary">Limpiar</button>
           </div>
+
+          <div class="download-actions">
+            <button id="download-png" type="button" class="download-btn">Descargar PNG</button>
+            <button id="download-svg" type="button" class="download-btn secondary">Descargar SVG</button>
+          </div>
+
+          <p class="note">Tu texto se procesa en tu navegador y no se envía a ningún servidor.</p>
+        </div>
+      </div>
+
+      <div class="preview-wrap">
+        <div class="preview-header">
+          <span>Vista previa</span>
+          <span id="status" class="status online" role="status" aria-live="polite">Listo</span>
         </div>
 
-        <div class="preview-wrap">
-          <div class="preview-header">
-            <span>Vista previa</span>
-            <span id="status" class="status online">Listo</span>
-          </div>
-
-          <div class="qr-frame">
-            <div id="qr-code" class="qr-code" aria-label="Código QR generado"></div>
-            <div id="empty-state" class="empty-state">
-              <span>Tu QR aparecerá aquí</span>
-            </div>
+        <div class="qr-frame">
+          <div id="qr-code" class="qr-code" aria-label="Código QR generado"></div>
+          <div id="empty-state" class="empty-state">
+            <span>Tu QR aparecerá aquí</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  </main>
 
-      <section class="faq-section" aria-labelledby="faq-title">
-        <h2 id="faq-title">Preguntas frecuentes sobre códigos QR</h2>
-        <details>
-          <summary>¿Cómo creo un código QR con este generador?</summary>
-          <p>Escribe o pega un texto o una URL, ajusta el tamaño y los colores si lo deseas, y el código QR se actualizará automáticamente. Después puedes descargarlo en PNG o SVG.</p>
-        </details>
-        <details>
-          <summary>¿Qué información puedo convertir en un código QR?</summary>
-          <p>Puedes crear un QR para una dirección web o para texto. Al escanearlo, el teléfono mostrará la información que hayas introducido.</p>
-        </details>
-        <details>
-          <summary>¿Cuál es la diferencia entre descargar el QR en PNG y SVG?</summary>
-          <p>PNG es práctico para compartir en pantalla y en redes sociales. SVG se puede ampliar sin perder nitidez, por lo que suele ser útil para impresión y diseño.</p>
-        </details>
-        <details>
-          <summary>¿El código QR caduca?</summary>
-          <p>El código generado contiene el texto o la URL que introdujiste y no tiene una fecha de caducidad propia. Si contiene un enlace, seguirá funcionando mientras esa dirección esté disponible.</p>
-        </details>
-      </section>
-    </main>
+  <!-- ========== SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) ========== -->
+  <section class="faq-section" aria-labelledby="titulo-faq">
+    <h2 id="titulo-faq">Preguntas frecuentes sobre QR Studio</h2>
+    <div class="faq-list">
 
-    <script>
-      const input = document.getElementById('qr-text');
-      const button = document.getElementById('generate-btn');
-      const clearButton = document.getElementById('clear-btn');
-      const qrCode = document.getElementById('qr-code');
-      const emptyState = document.getElementById('empty-state');
-      const status = document.getElementById('status');
-      const sizeRange = document.getElementById('size-range');
-      const sizeValue = document.getElementById('size-value');
-      const colorDark = document.getElementById('color-dark');
-      const colorLight = document.getElementById('color-light');
-      const downloadPngButton = document.getElementById('download-png');
-      const downloadSvgButton = document.getElementById('download-svg');
+      <details class="faq-item">
+        <summary class="faq-summary">¿Cómo creo un código QR con QR Studio?</summary>
+        <div class="faq-answer">
+          <p>Escribe o pega una URL o texto, ajusta el tamaño de vista previa, el nivel de corrección y los colores si lo deseas, y el código se actualizará automáticamente para descargarlo en PNG o SVG.</p>
+        </div>
+      </details>
 
-      let qrInstance = null;
+      <details class="faq-item">
+        <summary class="faq-summary">¿Qué diferencia hay entre descargar en PNG y en SVG?</summary>
+        <div class="faq-answer">
+          <p>El formato PNG es ideal para compartir en pantalla o redes sociales. El formato SVG es vectorial y puede escalarse sin perder nitidez, por lo que resulta ideal para impresión y diseño.</p>
+        </div>
+      </details>
 
-      function escapeHtml(value) {
-        return String(value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
-      }
+      <details class="faq-item">
+        <summary class="faq-summary">¿El código QR generado tiene caducidad?</summary>
+        <div class="faq-answer">
+          <p>No. El código QR codifica directamente el texto o enlace introducido y no caduca por sí mismo; si apunta a una URL, seguirá funcionando mientras el destino esté activo.</p>
+        </div>
+      </details>
 
-      function sanitizeUserInput(value) {
-        return String(value ?? '')
-          .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
-          .replace(/<script\b[\s\S]*?<\/script>/gi, '')
-          .trim();
-      }
+      <details class="faq-item">
+        <summary class="faq-summary">¿Mis datos o enlaces se envían a algún servidor?</summary>
+        <div class="faq-answer">
+          <p>No. La generación del QR ocurre localmente en tu navegador y el contenido que escribes no se sube a nuestros servidores.</p>
+        </div>
+      </details>
 
-      function renderEmptyState() {
-        qrCode.innerHTML = '';
-        qrCode.style.display = 'none';
-        emptyState.style.display = 'flex';
-        status.textContent = 'Vacío';
-        status.classList.remove('online');
-        status.classList.add('offline');
-      }
+    </div>
+  </section>
 
-      function updateSizeLabel() {
-        sizeValue.textContent = `${sizeRange.value} px`;
-      }
+  <!-- ========== ESPACIO PUBLICITARIO INFERIOR (Listo para integrar) ========== -->
+  <aside class="ad-wrapper ad-wrapper--bottom" aria-label="Espacio publicitario inferior">
+    <div class="ad-container ad-container--bottom" id="ad-slot-bottom">
+      <span class="ad-badge">Publicidad</span>
+      <div class="ad-slot-content">
+        <!-- Inserta aquí tu unidad de anuncio inferior -->
+        <span>Espacio para anuncio inferior</span>
+      </div>
+    </div>
+  </aside>
 
-      function getCurrentSettings() {
-        return {
-          text: sanitizeUserInput(input.value),
-          size: Number(sizeRange.value),
-          darkColor: colorDark.value,
-          lightColor: colorLight.value
-        };
-      }
+  <footer class="site-footer">
+    <p>© 2026 QR Studio. Todos los derechos reservados.</p>
+    <p>
+      <a href="/privacidad.html">Política de Privacidad</a>
+      <a href="/cookies.html">Política de Cookies</a>
+      <a href="/contacto.html">Contacto</a>
+    </p>
+  </footer>
 
-      function downloadBlob(blob, fileName) {
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      }
-
-      function updateQr(value) {
-        const text = sanitizeUserInput(value);
-        const size = Number(sizeRange.value);
-        const darkColor = escapeHtml(colorDark.value);
-        const lightColor = escapeHtml(colorLight.value);
-
-        if (!text) {
-          renderEmptyState();
-          return;
-        }
-
-        if (qrInstance) {
-          qrInstance.clear();
-        }
-
-        qrCode.innerHTML = '';
-        qrCode.style.display = 'flex';
-        qrCode.style.width = `${size}px`;
-        qrCode.style.height = `${size}px`;
-        qrCode.style.backgroundColor = lightColor;
-        emptyState.style.display = 'none';
-        qrCode.setAttribute('aria-label', `Código QR generado para: ${escapeHtml(text)}`);
-
-        qrInstance = new QRCode(qrCode, {
-          text,
-          width: size,
-          height: size,
-          colorDark: darkColor,
-          colorLight: lightColor,
-          correctLevel: QRCode.CorrectLevel.H
-        });
-
-        status.textContent = 'Listo';
-        status.classList.remove('offline');
-        status.classList.add('online');
-      }
-
-      function downloadPng() {
-        const { text } = getCurrentSettings();
-        if (!text) {
-          renderEmptyState();
-          return;
-        }
-
-        const canvas = qrCode.querySelector('canvas');
-        if (!canvas) {
-          updateQr(text);
-          return;
-        }
-
-        const imageUrl = canvas.toDataURL('image/png');
-        const byteString = atob(imageUrl.split(',')[1]);
-        const arrayBuffer = new Uint8Array(byteString.length);
-
-        for (let i = 0; i < byteString.length; i += 1) {
-          arrayBuffer[i] = byteString.charCodeAt(i);
-        }
-
-        downloadBlob(new Blob([arrayBuffer], { type: 'image/png' }), 'codigo-qr.png');
-      }
-
-      function downloadSvg() {
-        const { text, size, darkColor, lightColor } = getCurrentSettings();
-        if (!text) {
-          renderEmptyState();
-          return;
-        }
-
-        const qr = qrcode(0, 'H');
-        qr.addData(text);
-        qr.make();
-
-        const moduleCount = qr.getModuleCount();
-        const safeDarkColor = escapeHtml(darkColor);
-        const safeLightColor = escapeHtml(lightColor);
-        const safeText = escapeHtml(text);
-
-        let svgContent = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${moduleCount} ${moduleCount}">
-            <rect width="100%" height="100%" fill="${safeLightColor}"/>
-        `;
-
-        for (let row = 0; row < moduleCount; row += 1) {
-          for (let col = 0; col < moduleCount; col += 1) {
-            if (qr.isDark(row, col)) {
-              svgContent += `<rect x="${col}" y="${row}" width="1" height="1" fill="${safeDarkColor}"/>`;
-            }
-          }
-        }
-
-        svgContent += `
-          <title>${safeText}</title>
-          </svg>`;
-        downloadBlob(new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' }), 'codigo-qr.svg');
-      }
-
-      button.addEventListener('click', () => updateQr(input.value));
-      input.addEventListener('input', () => updateQr(input.value));
-      sizeRange.addEventListener('input', () => {
-        updateSizeLabel();
-        updateQr(input.value);
-      });
-      colorDark.addEventListener('input', () => updateQr(input.value));
-      colorLight.addEventListener('input', () => updateQr(input.value));
-
-      clearButton.addEventListener('click', () => {
-        input.value = '';
-        if (qrInstance) {
-          qrInstance.clear();
-          qrInstance = null;
-        }
-        renderEmptyState();
-      });
-
-      downloadPngButton.addEventListener('click', downloadPng);
-      downloadSvgButton.addEventListener('click', downloadSvg);
-
-      updateSizeLabel();
-      updateQr(input.value);
-    </script>
-  </body>
+</body>
 </html>
